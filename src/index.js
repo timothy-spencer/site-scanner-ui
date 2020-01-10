@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+// ========================================
+
 class Scans extends React.Component {
   constructor(props) {
     super(props);
@@ -10,6 +12,8 @@ class Scans extends React.Component {
       selected_scantype: '',
     };
   }
+
+// ========================================
 
   componentDidMount() {
     fetch(`https://site-scanning.app.cloud.gov/api/v1/scans/`)
