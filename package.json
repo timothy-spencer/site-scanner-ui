@@ -1,5 +1,5 @@
 {
-  "name": "site-scanning-dashboard2",
+  "name": "site-scanning-ui",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
