@@ -7,18 +7,19 @@ class Scans extends React.Component {
     super(props);
     this.state = {
       scantypes: [],
-      selected_scantype: null,
+      selected_scantype: '',
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     fetch(`https://site-scanning.app.cloud.gov/api/v1/scans/`)
       .then(result => result.json())
       .then(json => this.setState({scantypes: json}))
+      .then(scantype => this.setState({selected_scantype: this.state.scantypes[0]}))
   }
 
-  handleChange(event) {
-    this.setState({selected_scantype: event.target.value})
+  handleChange = (event) => {
+    this.setState({selected_scantype: event.target.value});
   }
 
   render() {
@@ -27,7 +28,7 @@ class Scans extends React.Component {
     }
 
     const scantypeselects = this.state.scantypes.map((scantype) => 
-      <option value="{scantype}">{scantype}</option>
+      <option key={scantype} value={scantype}>{scantype}</option>
     );
 
     return (
@@ -35,14 +36,13 @@ class Scans extends React.Component {
         <div className="scans-chooser">
           <label>
             Scan type to view:
-            <select value={this.state.selected_scantype} onChange={this.handleChange}>
+            <select id="scantypeselect" value={this.state.selected_scantype} onChange={this.handleChange}>
               {scantypeselects}
             </select>
           </label>
-          <input type="submit" value="Submit" />
         </div>
         <div className="scans-viewer">
-          <Scansviewer />
+          <Scansviewer scantype={this.state.selected_scantype} />
         </div>
       </div>
     );
@@ -50,16 +50,9 @@ class Scans extends React.Component {
 }
 
 class Scansviewer extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      page: null
-    }
-  }
-
   render() {
     return (
-      <p>Data lives here</p>
+      <p>Scan: {this.props.scantype}</p>
     );
   }
 }
