@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
 
 // ========================================
 
@@ -61,9 +59,5 @@ class Scansviewer extends React.Component {
   }
 }
 
-// ========================================
+export default Scans
 
-ReactDOM.render(
-  <Scans />,
-  document.getElementById('root')
-);
