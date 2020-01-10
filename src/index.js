@@ -56,7 +56,7 @@ class Scans extends React.Component {
 class Scansviewer extends React.Component {
   render() {
     return (
-      <p>Scan: {this.props.scantype} </p>
+      <p>Scan Type: {this.props.scantype}</p>
     );
   }
 }
